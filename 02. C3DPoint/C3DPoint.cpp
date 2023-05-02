@@ -42,12 +42,12 @@ public:
 	bool ChkOxy();
 	bool ChkOxz();
 	bool ChkOyz();
-	bool operator == (C3DPoint&);
-	bool operator != (C3DPoint&);
-	bool operator > (C3DPoint&);
-	bool operator >= (C3DPoint&);
-	bool operator < (C3DPoint&);
-	bool operator <= (C3DPoint&);
+	bool operator==(C3DPoint&);
+	bool operator!=(C3DPoint&);
+	bool operator>(C3DPoint&);
+	bool operator>=(C3DPoint&);
+	bool operator<(C3DPoint&);
+	bool operator<=(C3DPoint&);
 
 	//Processing methods
 	float OriDist();
@@ -107,29 +107,32 @@ int main()
 		cout << "\nThe first inputted point is located on Oxz plane." << endl;
 	if (A.ChkOyz() == true)
 		cout << "\nThe first inputted point is located on Oyz plane." << endl;
-	if (A == B)
-		cout << "\nThe first inputted point has equal origin distance with the second ones." << endl;
-	else if (A != B)
+	if (A >= B)
 	{
-		cout << "\nThe first inputted point doesn't have equal origin distance with the second ones.";
-		if (A <= B)
-		{
-			if (A < B)
-				cout << "\nThe first inputted point has the smaller origin distance with the second ones.";
-			else
-				cout << "\nThe first inputted point has the smaller or equal origin distance with the second ones.";
-		}
+		cout << "\nThe first inputted point has the bigger or equal origin distance with the second ones.";
+		if (A == B)
+			cout << "\nThe first inputted point has equal origin distance with the second ones." << endl;
 		else
 		{
-			if (A >= B)
-			{
-				if (A > B)
-					cout << "\nThe first inputted point has the bigger origin distance with the second ones.";
-				else
-					cout << "\nThe first inputted point has the bigger or equal origin distance with the second ones.";
-			}
+			if (A != B)
+				cout << "\nThe first inputted point doesn't have equal origin distance with the second ones.";
+			if (A > B)
+				cout << "\nThe first inputted point has the bigger origin distance with the second ones." << endl;
 		}
-	}	
+	}
+	if (A <= B)
+	{
+		cout << "\nThe first inputted point has the smaller or equal origin distance with the second ones.";
+		if (A == B)
+			cout << "\nThe first inputted point has equal origin distance with the second ones." << endl;
+		else
+		{
+			if (A != B)
+				cout << "\nThe first inputted point doesn't have equal origin distance with the second ones.";
+			if (A < B)
+				cout << "\nThe first inputted point has the smaller origin distance with the second ones." << endl;
+		}
+	}
 	cout << endl;
 	float d = A.Distance(B);
 	cout << "\nThe distance between the first inputted point and the second ones is:	" << d << ".";
@@ -323,44 +326,44 @@ bool C3DPoint::ChkOyz()
 	return false;
 }
 
-bool C3DPoint::operator == (C3DPoint& P)
+bool C3DPoint::operator==(C3DPoint& P)
 {
 	if (OriDist() == P.OriDist())
 		return true;
 	return false;
 }
 
-bool C3DPoint::operator != (C3DPoint& P)
+bool C3DPoint::operator!=(C3DPoint& P)
 {
 	if (OriDist() != P.OriDist())
 		return true;
 	return false;
 }
 
-bool C3DPoint::operator > (C3DPoint& P)
+bool C3DPoint::operator>(C3DPoint& P)
 {
 	if (OriDist() > P.OriDist())
 		return true;
 	return false;
 }
 
-bool C3DPoint::operator >= (C3DPoint& P)
+bool C3DPoint::operator>=(C3DPoint& P)
 {
 	if (OriDist() >= P.OriDist())
 		return true;
 	return false;
 }
 
-bool C3DPoint::operator < (C3DPoint& P)
+bool C3DPoint::operator<(C3DPoint& P)
 {
 	if (OriDist() < P.OriDist())
 		return true;
 	return false;
 }
 
-bool C3DPoint::operator <= (C3DPoint& P)
+bool C3DPoint::operator<=(C3DPoint& P)
 {
-	if (OriDist() < P.OriDist())
+	if (OriDist() <= P.OriDist())
 		return true;
 	return false;
 }

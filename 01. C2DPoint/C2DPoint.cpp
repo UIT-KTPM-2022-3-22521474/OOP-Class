@@ -39,12 +39,12 @@ public:
 	bool ChkQuarter2();
 	bool ChkQuarter3();
 	bool ChkQuarter4();
-	bool operator == (C2DPoint&);
-	bool operator != (C2DPoint&);
-	bool operator > (C2DPoint&);
-	bool operator >= (C2DPoint&);
-	bool operator < (C2DPoint&);
-	bool operator <= (C2DPoint&);
+	bool operator==(C2DPoint&);
+	bool operator!=(C2DPoint&);
+	bool operator>(C2DPoint&);
+	bool operator>=(C2DPoint&);
+	bool operator<(C2DPoint&);
+	bool operator<=(C2DPoint&);
 
 	//Processing methods
 	float OriDist();
@@ -101,30 +101,32 @@ int main()
 		cout << "\nThe first inputted point is located on the Quarter III of Cartesian coordinate system." << endl;
 	if (A.ChkQuarter4() == true)
 		cout << "\nThe first inputted point is located on the Quarter IV of Cartesian coordinate system." << endl;
-	if (A == B)
-		cout << "\nThe first inputted point has equal origin distance with the second ones." << endl;
-	else if (A != B)
+	if (A >= B)
 	{
-		cout << "\nThe first inputted point doesn't have equal origin distance with the second ones.";
-		if (A <= B)
-		{
-			if (A < B)
-				cout << "\nThe first inputted point has the smaller origin distance with the second ones.";
-			else
-				cout << "\nThe first inputted point has the smaller or equal origin distance with the second ones.";
-		}
+		cout << "\nThe first inputted point has the bigger or equal origin distance with the second ones.";
+		if (A == B)
+			cout << "\nThe first inputted point has equal origin distance with the second ones." << endl;
 		else
 		{
-			if (A >= B)
-			{
-				if (A > B)
-					cout << "\nThe first inputted point has the bigger origin distance with the second ones.";
-				else
-					cout << "\nThe first inputted point has the bigger or equal origin distance with the second ones.";
-			}
+			if (A != B)
+				cout << "\nThe first inputted point doesn't have equal origin distance with the second ones.";
+			if (A > B)
+				cout << "\nThe first inputted point has the bigger origin distance with the second ones." << endl;
 		}
 	}
-	cout << endl;
+	if (A <= B)
+	{
+		cout << "\nThe first inputted point has the smaller or equal origin distance with the second ones.";
+		if (A == B)
+			cout << "\nThe first inputted point has equal origin distance with the second ones." << endl;
+		else
+		{
+			if (A != B)
+				cout << "\nThe first inputted point doesn't have equal origin distance with the second ones.";
+			if (A < B)
+				cout << "\nThe first inputted point has the smaller origin distance with the second ones." << endl;
+		}
+	}
 	float d = A.Distance(B);
 	cout << "\nThe distance between the first inputted point and the second ones is:	" << d << ".";
 	float dx = A.DistanceX(B);
@@ -292,44 +294,44 @@ bool C2DPoint::ChkQuarter4()
 	return false;
 }
 
-bool C2DPoint::operator == (C2DPoint& P)
+bool C2DPoint::operator==(C2DPoint& P)
 {
 	if (OriDist() == P.OriDist())
 		return true;
 	return false;
 }
 
-bool C2DPoint::operator != (C2DPoint& P)
+bool C2DPoint::operator!=(C2DPoint& P)
 {
 	if (OriDist() != P.OriDist())
 		return true;
 	return false;
 }
 
-bool C2DPoint::operator > (C2DPoint& P)
+bool C2DPoint::operator>(C2DPoint& P)
 {
 	if (OriDist() > P.OriDist())
 		return true;
 	return false;
 }
 
-bool C2DPoint::operator >= (C2DPoint& P)
+bool C2DPoint::operator>=(C2DPoint& P)
 {
 	if (OriDist() >= P.OriDist())
 		return true;
 	return false;
 }
 
-bool C2DPoint::operator < (C2DPoint& P)
+bool C2DPoint::operator<(C2DPoint& P)
 {
 	if (OriDist() < P.OriDist())
 		return true;
 	return false;
 }
 
-bool C2DPoint::operator <= (C2DPoint& P)
+bool C2DPoint::operator<=(C2DPoint& P)
 {
-	if (OriDist() < P.OriDist())
+	if (OriDist() <= P.OriDist())
 		return true;
 	return false;
 }
