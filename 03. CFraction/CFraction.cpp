@@ -423,10 +423,10 @@ CFraction CFraction::operator+(const CFraction& ft)
 }
 CFraction CFraction::operator-(const CFraction& ft)
 {
-	CFraction s;
-	s.Numerator = ft.Numerator * Denominator - Numerator * ft.Denominator;
-	s.Denominator = ft.Denominator * Denominator;
-	return s;
+	CFraction d;
+	d.Numerator = ft.Numerator * Denominator - Numerator * ft.Denominator;
+	d.Denominator = ft.Denominator * Denominator;
+	return d;
 }
 CFraction CFraction::operator*(const CFraction& ft)
 {
