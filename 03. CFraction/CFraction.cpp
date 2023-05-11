@@ -168,11 +168,11 @@ int main()
 	D -= A;
 	D.Output();
 	cout << ".\nGet the sum between the first and the second fraction, multiply with its difference";
-	cout << "\nand then assign the result to the variable which hold the sum, its value becomes :	";
+	cout << "\nand then assign the result to the variable which hold the sum, its value becomes:	";
 	M1 *= D1;
 	M1.Output();
 	cout << ".\nGet the sum between the second and the first fraction, divide with its difference";
-	cout <<"\nand then assign the result to the variable which hold the sum, its value becomes :	"; 
+	cout <<"\nand then assign the result to the variable which hold the sum, its value becomes:	"; 
 	M2 /= D2;
 	M2.Output();
 	cout << "." << endl;

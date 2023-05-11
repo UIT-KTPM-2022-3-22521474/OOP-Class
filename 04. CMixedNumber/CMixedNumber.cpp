@@ -86,7 +86,7 @@ int main()
 		cout << "\nThe inputted mixed number is invalid. Please try again." << endl;
 		A.Input();
 	}
-	cout << "\nEnter the second mixed numer:" << endl;
+	cout << "\nEnter the second mixed number:" << endl;
 	cin >> B;
 	while (B.isValid() == false)
 	{
@@ -166,11 +166,11 @@ int main()
 	D -= A;
 	D.Output();
 	cout << ".\nGet the sum between the first and the second mixed number, multiply with its difference";
-	cout << "\nand then assign the result to the variable which hold the sum, its value becomes :	";
+	cout << "\nand then assign the result to the variable which hold the sum, its value becomes:	";
 	M1 *= D1;
 	M1.Output();
 	cout << ".\nGet the sum between the second and the first mixed number, divide with its difference";
-	cout << "\nand then assign the result to the variable which hold the sum, its value becomes :	";
+	cout << "\nand then assign the result to the variable which hold the sum, its value becomes:	";
 	M2 /= D2;
 	M2.Output();
 	cout << "." << endl;
