@@ -66,7 +66,7 @@ public:
 
 int main()
 {
-	cout << "Project 04 - 22521474 - Class CComplexNumber design." << endl;
+	cout << "Project 05 - 22521474 - Class CComplexNumber design." << endl;
 	return 1;
 }
 
