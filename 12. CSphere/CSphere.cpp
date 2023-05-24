@@ -209,7 +209,7 @@ void CSphere::Output()
 
 ostream& operator>>(ostream& os, CSphere& S)
 {
-	cout << "The circle centerpoint's coordinate:";
+	os << "The circle centerpoint's coordinate:";
 	os << S.I;
 	cout << "The circle's radius:";
 	os << S.R;
