@@ -54,6 +54,74 @@ public:
 int main()
 {
 	cout << "Project 07 - 22521474 - Class CTime design." << endl;
+	CTime A, C, E;
+	A.Init();
+	CTime B(0, 0, 0);
+	C.Init(0, 0, 0);
+	CTime D(A);
+	E.Init(A);
+	cout << "\nEnter the first time:" << endl;
+	A.Input();
+	while (A.isValid() == false)
+	{
+		cout << "\nThe inputted time is invalid. Please try again." << endl;
+		A.Input();
+	}
+	cout << "\nEnter the second time:" << endl;
+	cin >> B;
+	while (B.isValid() == false)
+	{
+		cout << "\nThe inputted time is invalid. Please try again." << endl;
+		B.Input();
+	}
+	cout << "\nThe first inputted time is:							";
+	A.Output();
+	cout << ".\nThe second inputted time is:							";
+	cout << B << "." << endl;
+	cout << "\nAfter assign the first time's value to the third ones, its value is:		";
+	C = A;
+	cout << C;
+	cout << ".\nAfter assign the second time's value to the fourth ones, its value is:		";
+	D = B;
+	D.Output();
+	cout << "." << endl;
+	if (A.isMorning() == true)
+		cout << "\nThe first inputted time is in the morning.";
+	if (A.isNoon() == true)
+		cout << "\nThe first inputted time is in the noon.";
+	if (A.isAfternoon() == true)
+		cout << "\nThe first inputted time is in the afternoon.";
+	if (A.isEvening() == true)
+		cout << "\nThe first inputted time is in the evening.";
+	if (A.isNight() == true)
+		cout << "\nThe first inputted time is in night.";
+	cout << endl;
+	if (A >= B)
+	{
+		cout << "\nThe first inputted time has the bigger or equal value with the second ones.";
+		if (A == B)
+			cout << "\nThe first inputted time has equal value with the second ones." << endl;
+		else
+		{
+			if (A != B)
+				cout << "\nThe first inputted time doesn't have equal value with the second ones.";
+			if (A > B)
+				cout << "\nThe first inputted time has the bigger value with the second ones." << endl;
+		}
+	}
+	if (A <= B)
+	{
+		cout << "\nThe first inputted time has the smaller or equal value with the second ones.";
+		if (A == B)
+			cout << "\nThe first inputted time has equal value with the second ones." << endl;
+		else
+		{
+			if (A != B)
+				cout << "\nThe first inputted time doesn't have equal value with the second ones.";
+			if (A < B)
+				cout << "\nThe first inputted time has the smaller value with the second ones." << endl;
+		}
+	}
 	return 1;
 }
 
@@ -102,7 +170,7 @@ void CTime::Input()
 	cin >> ss;
 	cout << "Enter the minute:	";
 	cin >> mm;
-	cout << "Enter the hour:	";
+	cout << "Enter the hour:		";
 	cin >> hh;
 }
 istream& operator>>(istream& is, CTime& t)
@@ -111,7 +179,7 @@ istream& operator>>(istream& is, CTime& t)
 	is >> t.ss;
 	cout << "Enter the minute:	";
 	is >> t.mm;
-	cout << "Enter the hour:	";
+	cout << "Enter the hour:		";
 	is >> t.hh;
 	return is;
 }
@@ -122,13 +190,16 @@ void CTime::Output()
 	string second, minute, hour;
 	if (ss < 10)
 		second = "0" + to_string(ss);
-	second = to_string(ss);
+	else
+		second = to_string(ss);
 	if (mm < 10)
 		minute = "0" + to_string(mm);
-	minute = to_string(mm);
+	else
+		minute = to_string(mm);
 	if (hh < 10)
 		hour = "0" + to_string(hh);
-	hour = to_string(hh);
+	else
+		hour = to_string(hh);
 	cout << hour << ":" << minute << ":" << second;
 }
 ostream& operator<<(ostream& os, CTime& t)
@@ -136,13 +207,16 @@ ostream& operator<<(ostream& os, CTime& t)
 	string second, minute, hour;
 	if (t.ss < 10)
 		second = "0" + to_string(t.ss);
-	second = to_string(t.ss);
+	else
+		second = to_string(t.ss);
 	if (t.mm < 10)
 		minute = "0" + to_string(t.mm);
-	minute = to_string(t.mm);
+	else
+		minute = to_string(t.mm);
 	if (t.hh < 10)
 		hour = "0" + to_string(t.hh);
-	hour = to_string(t.hh);
+	else
+		hour = to_string(t.hh);
 	os << hour << ":" << minute << ":" << second;
 	return os;
 }
@@ -271,4 +345,9 @@ bool CTime::operator<=(const CTime& t)
 int CTime::SecCount()
 {
 	return (hh * 3600 + mm * 60 + ss);
+}
+
+CTime::~CTime()
+{
+	return;
 }

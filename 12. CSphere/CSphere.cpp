@@ -20,6 +20,8 @@ public:
 	float getX();
 	float getY();
 	float getZ();
+	bool operator==(C3DPoint&);
+	float OriDist();
 	float Distance(const C3DPoint&);
 	void Output();
 	friend ostream& operator<<(ostream&, C3DPoint&);
@@ -58,9 +60,6 @@ public:
 	bool isInside(CSphere);
 	bool isOutside(CSphere);
 	bool isIntersected(CSphere);
-	bool isInside(C3DPoint);
-	bool isOutside(C3DPoint);
-	bool isBelong(CSphere);
 	bool operator==(CSphere);
 	bool operator!=(CSphere);
 	bool operator>(CSphere);
@@ -144,9 +143,22 @@ void C3DPoint::setZ(float pz)
 {
 	z = pz;
 }
+
+float C3DPoint::OriDist()
+{
+	return sqrt(x * x + y * y + z * z);
+}
+
 float C3DPoint::Distance(const C3DPoint& P)
 {
 	return sqrt((x - P.x) * (x - P.x) + (y - P.y) * (y - P.y) + (z - P.z) * (z - P.z));
+}
+
+bool C3DPoint::operator==(C3DPoint& P)
+{
+	if (OriDist() == P.OriDist())
+		return true;
+	return false;
 }
 
 //Initialization methods
@@ -207,11 +219,118 @@ void CSphere::Output()
 	cout << "The circle's radius:" << R;
 }
 
-ostream& operator>>(ostream& os, CSphere& S)
+ostream& operator<<(ostream& os, CSphere& S)
 {
 	os << "The circle centerpoint's coordinate:";
 	os << S.I;
 	cout << "The circle's radius:";
 	os << S.R;
 	return os;
+}
+
+C3DPoint CSphere::getI()
+{
+	return I;
+}
+
+float CSphere::getR()
+{
+	return R;
+}
+
+//Information update methods
+CSphere& CSphere::operator=(const CSphere& S)
+{
+	I = S.I;
+	R = S.R;
+	return *this;
+}
+void CSphere::setI(C3DPoint P)
+{
+	I.setX(P.getX());
+	I.setY(P.getY());
+	I.setZ(P.getZ());
+}
+void CSphere::setR(float radius)
+{
+	R = radius;
+}
+
+//"Check-if" methods
+bool CSphere::isCoincident(CSphere S)
+{
+	if ((I == S.I) && (R == S.R))
+		return true;
+	return false;
+}
+bool CSphere::isIncircle(CSphere S)
+{
+	float d = I.Distance(S.I) + R;
+	if (d == S.R)
+		return true;
+	return false;
+}
+bool CSphere::isCircumcircle(CSphere S)
+{
+	float d = I.Distance(S.I);
+	if (d == R + S.R)
+		return true;
+	return false;
+}
+bool CSphere::isInside(CSphere S)
+{
+	float d = I.Distance(S.I) + R;
+	if (d < 2 * S.R)
+		return true;
+	return false;
+}
+bool CSphere::isOutside(CSphere S)
+{
+	float d = I.Distance(S.I) + R;
+	if (d > 2 * S.R)
+		return true;
+	return false;
+}
+bool CSphere::isIntersected(CSphere S)
+{
+	if (I.Distance(S.I) < (R + S.R))
+		return true;
+	return false;
+}
+
+bool CSphere::operator==(CSphere S)
+{
+	if (R == S.R)
+		return true;
+	return false;
+}
+bool CSphere::operator!=(CSphere S)
+{
+	if (R != S.R)
+		return true;
+	return false;
+}
+bool CSphere::operator>(CSphere S)
+{
+	if (R > S.R)
+		return true;
+	return false;
+}
+bool CSphere::operator>=(CSphere S)
+{
+	if (R >= S.R)
+		return true;
+	return false;
+}
+bool CSphere::operator<(CSphere S)
+{
+	if (R < S.R)
+		return true;
+	return false;
+}
+bool CSphere::operator<=(CSphere S)
+{
+	if (R <= S.R)
+		return true;
+	return false;
 }
